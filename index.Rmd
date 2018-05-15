@@ -1,0 +1,137 @@
+---
+title: "<strong> An overview and perspective on social network monitoring </strong>"
+author: " <strong> William Woodall, Meng Zhao </strong>  </br> Department of Statistics, Virginia Tech </br> <strong>  Kamran Paynabar </strong> </br> Georgia Institute of Technology </br> <strong> Ross Sparks </strong> </br> CSIRO Computational Informatics </br> <strong> James D. Wilson </strong> </br> University of San Francisco </br>"
+date: "`r format(Sys.Date(), ' %m / %d / %Y')`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      css: [hygge, rladies, rladies-fonts]
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+class: center, middle
+
+![](http://www.bienestar.unal.edu.co/wp-content/uploads/2017/04/unal-700x300.png)
+
+## **Presentado por:**
+
+### Martín Andrés Macías Quintero
+
+## **Profesor:**
+
+### José Alberto Vargas Navas, PhD
+
+---
+### Contenido
+
+_Objetivos_
+
+1. _Panorama_ 
+
+2. _Introducción al lenguaje de redes_
+
+3. _Métodos de monitoreo_
+	- Cartas de control y pruebas de hipótesis
+	- Métodos bayesianos
+	- Métodos Scan
+	- Modelos de series temporales
+	- Otros enfoques
+
+4. _Algunos problemas en el monitoreo de redes sociales_
+	- Fase I vs. Fase II
+	- Uso de simulaciones computacionales
+	- Supuestos distribucionales
+	- Medidas de rendiemiento para esquemas de monitoreo
+
+5. _Oportunidades de investigación y conclusiones_
+
+---
+
+## Objetivos
+
+--
+
+1. Dar un panorama de métodos estadísticos para monitorear redes sociales.
+
+--
+
+2. Revisar las ventajas, limitaciones e inconvenientes de los métodos estadísticos usados en monitoreo de redes sociales.
+
+--
+
+3. Presentar la relación entre métodos de monitoreo de redes sociales y procesos industriales (estadísticas en ingeniería y vigilancia en salud pública)
+
+--
+
+4. Alentar a investigadores a desarrollar métodos de monitoreo en redes sociales y compararlos con los tradiciones métodos de monitoreo en procesos industriales.
+
+--
+
+5. Discutir algunos problemas en este campo y presentar algunas ideas de investigación.
+
+---
+
+class: inverse, middle, center
+
+#  Panorama
+
+---
+### Introducción
+
+- Creciente interés por investigar el monitoreo de redes sociales
+
+- Métodos de monitoreo de redes sociales que han permitido la detección de:
+	- Participantes importantes e influyentes en una red
+	- Estructuras organizacionales clandestinas
+	- Actividades fraudulentas o destructivas
+	
+#### _Idea básica:_ 
+
+- Detectar cambios súbitos en el comportamiento de un subconjunto de individuos en una red.
+  - Incrementos significativos en los niveles de comunicación de la red completa, de redes más pequeñas o de individuos de interés.
+  - Decrementos en niveles de comunicación.
+  
+#### _Anomalías:_
+
+Regiones de la red con estructura diferente de la esperada bajo condiciones normales.
+
+
+---
+
+.center[
+
+<img src="imagenes/01.png" width="480">
+
+
+.caption[
+**Fig. 1:** Ilustración de una red terrorista. Krebs (2002)
+]
+
+]
+---
+class: middle
+.center[
+
+<img src="imagenes/06.png" width="1200">
+
+
+.caption[
+**Fig. 2:** Ilustración de tres instantáneas de redes de correo electrónico de Enron en 2000 (izquierda), 2001 (centro), 2002 (derecha)
+]
+
+]
+
+---
+class: center, middle, inverse
+
+# ¡Gracias!
+
+Diapositivas creadas mediante el paquete de R **xaringan**.
+

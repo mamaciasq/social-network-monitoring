@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> An overview and perspective on social network monitoring</title>
+    <meta charset="utf-8">
+    <meta name="author" content=" William Woodall, Meng Zhao   Department of Statistics, Virginia Tech   Kamran Paynabar   Georgia Institute of Technology   Ross Sparks   CSIRO Computational Informatics   James D. Wilson   University of San Francisco" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# <strong> An overview and perspective on social network monitoring </strong>
+### <strong> William Woodall, Meng Zhao </strong> </br> Department of Statistics, Virginia Tech </br> <strong> Kamran Paynabar </strong> </br> Georgia Institute of Technology </br> <strong> Ross Sparks </strong> </br> CSIRO Computational Informatics </br> <strong> James D. Wilson </strong> </br> University of San Francisco </br>
+### 05 / 15 / 2018
+
+---
+
+
+
+
+class: center, middle
+
+![](http://www.bienestar.unal.edu.co/wp-content/uploads/2017/04/unal-700x300.png)
+
+## **Presentado por:**
+
+### Martín Andrés Macías Quintero
+
+## **Profesor:**
+
+### José Alberto Vargas Navas, PhD
+
+---
+### Contenido
+
+_Objetivos_
+
+1. _Panorama_ 
+
+2. _Introducción al lenguaje de redes_
+
+3. _Métodos de monitoreo_
+	- Cartas de control y pruebas de hipótesis
+	- Métodos bayesianos
+	- Métodos Scan
+	- Modelos de series temporales
+	- Otros enfoques
+
+4. _Algunos problemas en el monitoreo de redes sociales_
+	- Fase I vs. Fase II
+	- Uso de simulaciones computacionales
+	- Supuestos distribucionales
+	- Medidas de rendiemiento para esquemas de monitoreo
+
+5. _Oportunidades de investigación y conclusiones_
+
+---
+
+## Objetivos
+
+--
+
+1. Dar un panorama de métodos estadísticos para monitorear redes sociales.
+
+--
+
+2. Revisar las ventajas, limitaciones e inconvenientes de los métodos estadísticos usados en monitoreo de redes sociales.
+
+--
+
+3. Presentar la relación entre métodos de monitoreo de redes sociales y procesos industriales (estadísticas en ingeniería y vigilancia en salud pública)
+
+--
+
+4. Alentar a investigadores a desarrollar métodos de monitoreo en redes sociales y compararlos con los tradiciones métodos de monitoreo en procesos industriales.
+
+--
+
+5. Discutir algunos problemas en este campo y presentar algunas ideas de investigación.
+
+---
+
+class: inverse, middle, center
+
+#  Panorama
+
+---
+### Introducción
+
+- Creciente interés por investigar el monitoreo de redes sociales
+
+- Métodos de monitoreo de redes sociales que han permitido la detección de:
+	- Participantes importantes e influyentes en una red
+	- Estructuras organizacionales clandestinas
+	- Actividades fraudulentas o destructivas
+	
+#### _Idea básica:_ 
+
+- Detectar cambios súbitos en el comportamiento de un subconjunto de individuos en una red.
+  - Incrementos significativos en los niveles de comunicación de la red completa, de redes más pequeñas o de individuos de interés.
+  - Decrementos en niveles de comunicación.
+  
+#### _Anomalías:_
+
+Regiones de la red con estructura diferente de la esperada bajo condiciones normales.
+
+
+---
+
+.center[
+
+&lt;img src="imagenes/01.png" width="480"&gt;
+
+
+.caption[
+**Fig. 1:** Ilustración de una red terrorista. Krebs (2002)
+]
+
+]
+---
+class: middle
+.center[
+
+&lt;img src="imagenes/06.png" width="1200"&gt;
+
+
+.caption[
+**Fig. 2:** Ilustración de tres instantáneas de redes de correo electrónico de Enron en 2000 (izquierda), 2001 (centro), 2002 (derecha)
+]
+
+]
+
+---
+class: center, middle, inverse
+
+# ¡Gracias!
+
+Diapositivas creadas mediante el paquete de R **xaringan**.
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"css": ["hygge", "rladies", "rladies-fonts"]
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
