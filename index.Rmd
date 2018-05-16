@@ -2,14 +2,6 @@
 title: "<strong> An overview and perspective on social network monitoring </strong>"
 author: " <strong> William Woodall, Meng Zhao </strong>  </br> Department of Statistics, Virginia Tech </br> <strong>  Kamran Paynabar </strong> </br> Georgia Institute of Technology </br> <strong> Ross Sparks </strong> </br> CSIRO Computational Informatics </br> <strong> James D. Wilson </strong> </br> University of San Francisco </br>"
 date: "`r format(Sys.Date(), ' %m / %d / %Y')`"
-output:
-  xaringan::moon_reader:
-    lib_dir: libs
-    nature:
-      highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
-      css: [hygge, rladies, rladies-fonts]
 ---
 
 ```{r setup, include=FALSE}
