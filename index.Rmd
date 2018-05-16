@@ -92,6 +92,29 @@ class: inverse, middle, center
 
 Regiones de la red con estructura diferente de la esperada bajo condiciones normales.
 
+---
+# Análisis de redes sociales
+
+Las **redes sociales** pueden señalar un **cambio** dentro de una organización, e incluso pueden **predecir** eventos o comportamientos significativos.
+
+.footnote[
+[1] McCulloh, I., Webb, M., Graham, J., Carley, K., & Horn, D. B. (2008). Change detection in social networks. Military Academy Dept Mathematical sciences. [PDF](http://www.dtic.mil/get-tr-doc/pdf?AD=ADA484611)
+]
+
+--
+
+Detectar esos cambios permite 
+
+* la **anticipación** y **advertencia** temprana de cambio y
+* **respuesta** inmediata ante el cambio.
+
+--
+
+### _*Procedimiento*_
+
+Aplicar técnicas de **control estadístico de procesos** 
+a redes sociales para detectar esos cambios.
+
 
 ---
 
@@ -191,6 +214,20 @@ $$b_k = \sum _{i,j} \frac{g_{ikj}}{g_{ij}}$$
 
 ]
 
+---
+## Promedios de medidas
+
+<p align="center">
+  <img width="550" height="300" src="imagenes/07.PNG">
+</p>
+
+--
+
+**Notas**
+
++ Puede haber un cambio significativo en la red de al-Qaeda entre los años 2000 y 2001. 
+
++ Se nos alertaría de un cambio crítico en la red antes de los ataques terroristas del 11 de septiembre.
 ---
 class: center, middle, inverse
 
@@ -306,10 +343,10 @@ class: center, middle, inverse
 .tg .tg-x9k1{background-color:#f9f9f9;font-style:italic;font-family:Georgia, serif !important;;border-color:#000000;vertical-align:top}
 .tg .tg-rg1e{background-color:#f9f9f9;font-family:Georgia, serif !important;;border-color:#000000;vertical-align:top}
 </style>
-<table class="tg" style="undefined;table-layout: fixed; width: 844px">
+<table class="tg" style="undefined;table-layout: fixed; width: 725px">
 <colgroup>
-<col style="width: 508.8235294818878px">
-<col style="width: 334.8235294818878px">
+<col style="width: 446.8235294818878px">
+<col style="width: 277.8235294818878px">
 </colgroup>
   <tr>
     <th class="tg-pvrp">Artículo</th>
@@ -321,7 +358,7 @@ class: center, middle, inverse
   </tr>
   <tr>
     <td class="tg-0ev2">Some current directions in the theory and application of statistical process monitoring</td>
-    <td class="tg-yv9v">Revisión&nbsp;&nbsp;de trabajos en esta área</td>
+    <td class="tg-yv9v">Revisión,de trabajos en esta área</td>
   </tr>
   <tr>
     <td class="tg-x9k1">SPC procedures for monitoring autocorrelated processes</td>
