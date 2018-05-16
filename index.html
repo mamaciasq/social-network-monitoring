@@ -13,7 +13,7 @@ class: center, middle, inverse, title-slide
 
 # <strong> An overview and perspective on social network monitoring </strong>
 ### <strong> William Woodall, Meng Zhao </strong> </br> Department of Statistics, Virginia Tech </br> <strong> Kamran Paynabar </strong> </br> Georgia Institute of Technology </br> <strong> Ross Sparks </strong> </br> CSIRO Computational Informatics </br> <strong> James D. Wilson </strong> </br> University of San Francisco </br>
-### 05 / 15 / 2018
+### 05 / 16 / 2018
 
 ---
 
@@ -44,7 +44,6 @@ _Objetivos_
 3. _Métodos de monitoreo_
 	- Cartas de control y pruebas de hipótesis
 	- Métodos bayesianos
-	- Métodos Scan
 	- Modelos de series temporales
 	- Otros enfoques
 
@@ -52,9 +51,8 @@ _Objetivos_
 	- Fase I vs. Fase II
 	- Uso de simulaciones computacionales
 	- Supuestos distribucionales
-	- Medidas de rendiemiento para esquemas de monitoreo
 
-5. _Oportunidades de investigación y conclusiones_
+5. _Oportunidades de investigación_
 
 ---
 
@@ -131,6 +129,331 @@ class: middle
 ]
 
 ]
+
+---
+class: inverse, middle, center
+
+# Introducción al lenguaje de redes
+
+---
+
+### Grafos
+
+Las redes o grafos proveen mecanismos matemáticos para modelar los patrones de comunicación entre grupos de individuos.
+
+&lt;center&gt;&lt;iframe src="https://giphy.com/embed/fXCEXIA9aWbSg" width="550" height="550" frameBorder="0" class="giphy-embed" allowFullScreen&gt;&lt;/iframe&gt;&lt;/center&gt;
+
+
+---
+
++ Una **red social observada** se modela mediante un grafo. Los **nodos** representan a las personas y los **enlaces** a las conexiones entre ellos. [1] 
+
+.footnote[[1] (Scott, 2002; Wasserman &amp; Faust, 1994) ]
+
+--
+
++ Los enlaces pueden ponderarse para resaltar la importancia de la conexión o pueden dirigirse para mostrar quién inicia la conexión y quién la recibe. 
+
+--
+.center[
+
+&lt;img src="imagenes/05.png" width="400"&gt;
+
+
+.caption[
+**Fig. 3:** Ilustración de una pequeña red con 12 nodos y 16 enlaces.
+]
+
+]
+---
+# Medidas de centralidad de redes
+
+La centralidad es una función que asigna valores numéricos a cada nodo de acuerdo con su influencia en la red sobre los demás individuos.
+
+--
+.pull-left[
+
+**Densidad**
+
+Número de enlaces que existen en el grafo dividido por el número total de enlaces posibles.
+
+$$ d = \frac{\text{# enlaces}}{n(n-1)}$$
+--
+
+**Centralidad** _(Closeness)_
+
+Cómo se conecta un nodo más allá de sus vecinos más próximos.
+
+`$$c_k = \frac{\min_k\{\sum_{i=1}^n g_{ki}\}}{\sum_{i=1}^n g_{ki}}$$`
+
+]
+
+--
+
+.pull-right[
+
+**Intermediación** _(Betweenness)_
+
+Con qué frecuencia un nodo se encuentra a lo largo de la ruta más corta, o geodésica, entre otros dos nodos para todos los nodos en un gráfico.
+
+`$$b_k = \sum _{i,j} \frac{g_{ikj}}{g_{ij}}$$`
++ `\(g_{ikj}\)`: número de rutas geodésicas entre los nodos `\(i\)` y `\(j\)` cruzando el nodo `\(k\)`.
+
++ `\(g_{ij}\)`: número total de rutas geodésicas entre los nodos `\(i\)` y `\(j\)`.
+
+]
+
+---
+class: center, middle, inverse
+
+# Métodos de monitoreo
+---
+## Métodos de Cartas de control y pruebas de hipótesis
+
+&lt;style type="text/css"&gt;
+.tg  {border-collapse:collapse;border-spacing:0;border-width:1px;border-style:solid;border-color:#ccc;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+.tg .tg-0ev2{font-style:italic;font-family:Georgia, serif !important;;border-color:#000000;vertical-align:top}
+.tg .tg-r16w{background-color:#f9f9f9;font-style:italic;font-family:Georgia, serif !important;;border-color:#000000}
+.tg .tg-pvrp{font-weight:bold;font-family:Georgia, serif !important;;border-color:#000000;text-align:center}
+.tg .tg-eqkn{background-color:#f9f9f9;font-family:Georgia, serif !important;;border-color:#000000}
+.tg .tg-x9k1{background-color:#f9f9f9;font-style:italic;font-family:Georgia, serif !important;;border-color:#000000;vertical-align:top}
+.tg .tg-yv9v{font-family:Georgia, serif !important;;border-color:#000000;vertical-align:top}
+.tg .tg-rg1e{background-color:#f9f9f9;font-family:Georgia, serif !important;;border-color:#000000;vertical-align:top}
+&lt;/style&gt;
+&lt;table class="tg"&gt;
+  &lt;tr&gt;
+    &lt;th class="tg-pvrp"&gt;Artículo&lt;/th&gt;
+    &lt;th class="tg-pvrp"&gt;Perspectiva de monitoreo&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-r16w"&gt;Social network change detection&lt;/td&gt;
+    &lt;td class="tg-eqkn" rowspan="3"&gt;Cartas CUSUM y EWMA para detectar cambios en el comportamiento &lt;br&gt;de las comunicaciones en unidades militares.&lt;br&gt;Utilizaron medidas de centralidad de redes.&lt;br&gt;Establecieron que entre 5 más redes deben ser usadas para establecer una línea de base&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-0ev2"&gt;Detecting change in human social behavior simulation.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-x9k1"&gt;Detecting change in longitudinal social networks&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-0ev2"&gt;Monitoring temporal homogeneity in attributed network streams&lt;/td&gt;
+    &lt;td class="tg-yv9v"&gt;Regresión logística para modelar la probabilidad de conexión entre individuos usando &lt;br&gt;covariables como variables explicatorias para detectar cambios dentro y entre sub-redes específicas.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-x9k1"&gt;Binary response profiles&lt;/td&gt;
+    &lt;td class="tg-rg1e"&gt;Monitoreo de perfiles para determinar cuando el modelo de regresión logística varía en el tiempo&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-0ev2"&gt;Efficient anomaly detection in dynamic, attributed graphs&lt;/td&gt;
+    &lt;td class="tg-yv9v"&gt;Modelos log-lineales para probabilidades de conexión entre individuos que permite ahorro computacional.&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+---
+### Métodos bayesianos
+
+&lt;style type="text/css"&gt;
+.tg  {border-collapse:collapse;border-spacing:0;border-width:1px;border-style:solid;border-color:#ccc;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+.tg .tg-0ev2{font-style:italic;font-family:Georgia, serif !important;;border-color:#000000;vertical-align:top}
+.tg .tg-r16w{background-color:#f9f9f9;font-style:italic;font-family:Georgia, serif !important;;border-color:#000000}
+.tg .tg-pvrp{font-weight:bold;font-family:Georgia, serif !important;;border-color:#000000;text-align:center}
+.tg .tg-eqkn{background-color:#f9f9f9;font-family:Georgia, serif !important;;border-color:#000000}
+.tg .tg-yv9v{font-family:Georgia, serif !important;;border-color:#000000;vertical-align:top}
+.tg .tg-x9k1{background-color:#f9f9f9;font-style:italic;font-family:Georgia, serif !important;;border-color:#000000;vertical-align:top}
+&lt;/style&gt;
+&lt;table class="tg" style="undefined;table-layout: fixed; width: 810px"&gt;
+&lt;colgroup&gt;
+&lt;col style="width: 510.8235294818878px"&gt;
+&lt;col style="width: 298.8235294818878px"&gt;
+&lt;/colgroup&gt;
+  &lt;tr&gt;
+    &lt;th class="tg-pvrp"&gt;Artículo&lt;/th&gt;
+    &lt;th class="tg-pvrp"&gt;Perspectiva de monitoreo&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-r16w"&gt;Bayesian anomaly detection methods for social networks&lt;/td&gt;
+    &lt;td class="tg-eqkn"&gt;1. Detección de individuos con niveles de comunicación anómalos&lt;br&gt;2. Se forman sub-redes con individuos identificados para analizar anomalías.&lt;br&gt;Se usan límites de control basados en distribuciones predictivas bayesianas entre &lt;br&gt;todos los pares de individuos para identificar subconjuntos de individuos potencialmente anómalos.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-0ev2"&gt;Combined exponentially weighted moving average charts &lt;br&gt;for the mean and variance based on the predictive distribution&lt;/td&gt;
+    &lt;td class="tg-yv9v" rowspan="8"&gt;Cartas de control con límites de control basados en distribuciones predictivas Bayesianas &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-x9k1"&gt;On the evaluation of control chart Limits based on predictive distributions&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-0ev2"&gt;Control charts for the generalized variance based on its predictive distribution&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-x9k1"&gt;Control charts for the variance and coefficient of variation based on &lt;br&gt;their predictive distribution&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-0ev2"&gt;Multivariate exponentially weighted moving average charts for a &lt;br&gt;mean based on its predictive distribution&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-x9k1"&gt;A Bayesian sequential look at u- control charts&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-0ev2"&gt;Phase I design scheme for X-bar chart based on posterior distribution&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-x9k1"&gt;Bayesian control chart for nonconformities&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+---
+### Modelos de series temporales
+
+&lt;style type="text/css"&gt;
+.tg  {border-collapse:collapse;border-spacing:0;border-width:1px;border-style:solid;border-color:#ccc;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+.tg .tg-0ev2{font-style:italic;font-family:Georgia, serif !important;;border-color:#000000;vertical-align:top}
+.tg .tg-r16w{background-color:#f9f9f9;font-style:italic;font-family:Georgia, serif !important;;border-color:#000000}
+.tg .tg-pvrp{font-weight:bold;font-family:Georgia, serif !important;;border-color:#000000;text-align:center}
+.tg .tg-eqkn{background-color:#f9f9f9;font-family:Georgia, serif !important;;border-color:#000000}
+.tg .tg-yv9v{font-family:Georgia, serif !important;;border-color:#000000;vertical-align:top}
+.tg .tg-x9k1{background-color:#f9f9f9;font-style:italic;font-family:Georgia, serif !important;;border-color:#000000;vertical-align:top}
+.tg .tg-rg1e{background-color:#f9f9f9;font-family:Georgia, serif !important;;border-color:#000000;vertical-align:top}
+&lt;/style&gt;
+&lt;table class="tg" style="undefined;table-layout: fixed; width: 844px"&gt;
+&lt;colgroup&gt;
+&lt;col style="width: 508.8235294818878px"&gt;
+&lt;col style="width: 334.8235294818878px"&gt;
+&lt;/colgroup&gt;
+  &lt;tr&gt;
+    &lt;th class="tg-pvrp"&gt;Artículo&lt;/th&gt;
+    &lt;th class="tg-pvrp"&gt;Perspectiva de monitoreo&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-r16w"&gt;Anomaly detection in time series of graphs using arma processes&lt;/td&gt;
+    &lt;td class="tg-eqkn"&gt;Método de monitoreo basado en series de tiempo.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-0ev2"&gt;Some current directions in the theory and application of statistical process monitoring&lt;/td&gt;
+    &lt;td class="tg-yv9v"&gt;Revisión&amp;nbsp;&amp;nbsp;de trabajos en esta área&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-x9k1"&gt;SPC procedures for monitoring autocorrelated processes&lt;/td&gt;
+    &lt;td class="tg-rg1e"&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-0ev2"&gt;Statistical methods for the prospective detection of infectious disease outbreaks: A review&lt;/td&gt;
+    &lt;td class="tg-yv9v"&gt;Vigilancia en salud pública&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+---
+### Otros enfoques
+
+&lt;style type="text/css"&gt;
+.tg  {border-collapse:collapse;border-spacing:0;border-width:1px;border-style:solid;border-color:#ccc;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+.tg .tg-0ev2{font-style:italic;font-family:Georgia, serif !important;;border-color:#000000;vertical-align:top}
+.tg .tg-r16w{background-color:#f9f9f9;font-style:italic;font-family:Georgia, serif !important;;border-color:#000000}
+.tg .tg-hqcm{background-color:#f9f9f9;font-style:italic;font-family:Georgia, serif !important;;vertical-align:top}
+.tg .tg-pvrp{font-weight:bold;font-family:Georgia, serif !important;;border-color:#000000;text-align:center}
+.tg .tg-eqkn{background-color:#f9f9f9;font-family:Georgia, serif !important;;border-color:#000000}
+.tg .tg-yv9v{font-family:Georgia, serif !important;;border-color:#000000;vertical-align:top}
+.tg .tg-x9k1{background-color:#f9f9f9;font-style:italic;font-family:Georgia, serif !important;;border-color:#000000;vertical-align:top}
+.tg .tg-rg1e{background-color:#f9f9f9;font-family:Georgia, serif !important;;border-color:#000000;vertical-align:top}
+.tg .tg-coa1{background-color:#f9f9f9;font-family:Georgia, serif !important;;vertical-align:top}
+&lt;/style&gt;
+&lt;table class="tg" style="undefined;table-layout: fixed; width: 815px"&gt;
+&lt;colgroup&gt;
+&lt;col style="width: 478.8235294818878px"&gt;
+&lt;col style="width: 335.8235294818878px"&gt;
+&lt;/colgroup&gt;
+  &lt;tr&gt;
+    &lt;th class="tg-pvrp"&gt;Artículo&lt;/th&gt;
+    &lt;th class="tg-pvrp"&gt;Perspectiva de monitoreo&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-r16w"&gt;Detection of overlapping communities in dynamical social networks&lt;/td&gt;
+    &lt;td class="tg-eqkn"&gt;Identifica cambios en la estructura de la comunidad en el tiempo&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-0ev2"&gt;Spatiotemporal social media analytics for abnormal event detection and examination using seasonal-trend decomposition&lt;/td&gt;
+    &lt;td class="tg-yv9v"&gt;Detección de eventos anormales rápidamente, usando datos de redes sociales que incorpora información espacio-temporal. (tiroteo masivo)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-x9k1"&gt;The social amplifier—reaction of human communities to emergencies&lt;/td&gt;
+    &lt;td class="tg-rg1e"&gt;Detección de eventos extraordinarios usando el timepo y tráfico de una red asumiendo que no se conoce el contenido de los mensajes.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-0ev2"&gt;COMPA: Detecting compromised accounts on social networks&lt;/td&gt;
+    &lt;td class="tg-yv9v"&gt;Identificar cuentas de usuario comprometidas mediante el desarrollo de perfiles de comportamiento para los usuarios. Su método implica buscar grupos de cuentas que experimentan cambios similares en un corto período de tiempo&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class="tg-hqcm"&gt;Discovering emerging topics in social streams via link anomaly detection&lt;/td&gt;
+    &lt;td class="tg-coa1"&gt;Detección de temas emergentes de flujos de redes sociales basados en el comportamiento de los usuarios.&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+---
+class: center, middle, inverse
+
+# Algunos problemas en el monitoreo de redes sociales
+
+---
+
+## Fase I vs. Fase II
+
++ Es difícil obtener una línea de base de datos de red estables. 
+
++ Savage _et al._ (2014) menciona métodos _estáticos_ o _dinámicos_ de detección de anomalías en redes sociales.  
+
++ Para los métodos de red _estáticos_, el orden cronológico de los contactos se ignora con todos los datos agregados a lo largo del tiempo. 
+
++ Es útil también distinguir entre los métodos dinámicos de Fase I que se utilizarán en un conjunto de datos históricos con el orden temporal preservado y la monitorización dinámica de Fase II realizada en línea a medida que se observa cada nueva matriz de recuentos. 
+---
+## Uso de simulaciones computacionales
+
++ Los métodos necesitan compararse con redes simuladas.
+
++ Las anomalías se pueden modelar en los conjuntos de datos simulados y los métodos se pueden comparar en función de su capacidad para detectar las anomalías. 
+
++ Existen ventajas en el uso de modelos estadísticos paramétricos para las redes, de modo que se pueden generar múltiples grafos para representar una línea de base y para que las anomalías puedan simularse cambiando los parámetros correspondientes
+
++ El uso de redes simplificadas probablemente proporcionará información valiosa sobre el rendimiento relativo de los métodos de la competencia. _Si un método no es efectivo para detectar cambios en redes simples, es poco probable que sea efectivo con redes más complejas_. 
+
++ Se requieren decisiones sobre el número de individuos en la red, la agrupación de individuos en subredes, el tipo de información de covariables, si existe, y el tipo de anomalía que se detectará.
+---
+## Supuestos distribucionales
+
++ Algunas veces se asume que el número de comunicaciones entre pares de individuos se distribuye Poisson o una variante de esta.
+
++ Sin embargo, puede verse que se ajustaría mejor una distribución de cola pesada. 
+
++ El uso de modelos bayesianos puede generar distribuciones binomiales negativas para los recuentos que están sobredispersados en relación con la distribución de Poisson.
+
++ La probabilidad de un vínculo entre dos individuos se modeló utilizando el modelo log lineal y la regresión logística.
+---
+
+class: center, middle, inverse
+
+# Oportunidades de investigación
+
+---
+
++ Evaluación y comparación del rendimiento de métodos existentes. Las comparaciones de métodos existentes probablemente generarían ideas para nuevos métodos. Eso es mejor si los nuevos métodos son escalables para redes grandes.
+
++ Investigaciones tendientes a proporcionar orientación sobre la selección de las medidas de red más efectivas para monitorear a fin de satisfacer los objetivos del monitoreo.
+
++ Es necesario estudiar el efecto de la agregación a lo largo del tiempo en el monitoreo de redes
+
++ El uso de enfoques de tasa de descubrimiento falso parece apropiado para métodos basados en el uso simultáneo de muchas cartas.
+
++ Se necesitan métodos adicionales que incorporen información de covariables sobre la red o los contactos. Esto podría incluir etiquetas que clasifiquen individuos en grupos, la longitud o el tamaño del mensaje que constituye el contacto y el momento de cualquier contacto.
+
++ Es probable que haya efectos estacionales en los datos de la red, por ejemplo, efectos del día de la semana o efectos de días festivos. Los efectos estacionales podrían identificarse utilizando datos de la Fase I. En ocasiones, el efecto de esta variación puede eliminarse al agregar los datos a lo largo del tiempo, por ejemplo, la agregación de datos diarios por semanas. 
+
+---
+
++ Los métodos deben adaptarse a las redes en evolución para dar cuenta de los nuevos individuos que ingresan a la red y de las personas que abandonan la red. Estos eventos pueden desencadenar señales de cambio de red que probablemente no interesen.
+
++ Como un tema de investigación de monitoreo de calidad, se necesita una comparación entre las cartas de control bayesianas basados en las distribuciones predictivas y los enfoques frecuentistas.
 
 ---
 class: center, middle, inverse
