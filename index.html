@@ -13,7 +13,7 @@ class: center, middle, inverse, title-slide
 
 # <strong> An overview and perspective on social network monitoring </strong>
 ### <strong> William Woodall, Meng Zhao </strong> </br> Department of Statistics, Virginia Tech </br> <strong> Kamran Paynabar </strong> </br> Georgia Institute of Technology </br> <strong> Ross Sparks </strong> </br> CSIRO Computational Informatics </br> <strong> James D. Wilson </strong> </br> University of San Francisco </br>
-### 05 / 16 / 2018
+### 05 / 17 / 2018
 
 ---
 
@@ -107,7 +107,7 @@ Regiones de la red con estructura diferente de la esperada bajo condiciones norm
 ---
 # Análisis de redes sociales
 
-Las **redes sociales** pueden señalar un **cambio** dentro de una organización, e incluso pueden **predecir** eventos o comportamientos significativos.
+Con el **análisis de redes sociales** es posible encontrar **cambios** dentro de una organización, e incluso pueden **predecirse** eventos o comportamientos significativos que se relacionen con la red.
 
 .footnote[
 [1] McCulloh, I., Webb, M., Graham, J., Carley, K., &amp; Horn, D. B. (2008). Change detection in social networks. Military Academy Dept Mathematical sciences. [PDF](http://www.dtic.mil/get-tr-doc/pdf?AD=ADA484611)
@@ -117,8 +117,8 @@ Las **redes sociales** pueden señalar un **cambio** dentro de una organización
 
 Detectar esos cambios permite 
 
-* la **anticipación** y **advertencia** temprana de cambio y
-* **respuesta** inmediata ante el cambio.
+* la **anticipación** y **advertencia** temprana de un evento y
+* la **respuesta** inmediata ante ese suceso.
 
 --
 
@@ -217,7 +217,7 @@ Cómo se conecta un nodo más allá de sus vecinos más próximos.
 
 **Intermediación** _(Betweenness)_
 
-Con qué frecuencia un nodo se encuentra a lo largo de la ruta más corta, o geodésica, entre otros dos nodos para todos los nodos en un gráfico.
+Con qué frecuencia un nodo se encuentra a lo largo de la ruta más corta, o geodésica, entre otros dos nodos para todos los nodos en un grafo.
 
 `$$b_k = \sum _{i,j} \frac{g_{ikj}}{g_{ij}}$$`
 + `\(g_{ikj}\)`: número de rutas geodésicas entre los nodos `\(i\)` y `\(j\)` cruzando el nodo `\(k\)`.
@@ -463,7 +463,7 @@ class: center, middle, inverse
 
 + Sin embargo, puede verse que se ajustaría mejor una distribución de cola pesada. 
 
-+ El uso de modelos bayesianos puede generar distribuciones binomiales negativas para los recuentos que están sobredispersados en relación con la distribución de Poisson.
++ El uso de modelos bayesianos puede generar distribuciones binomiales negativas para los recuentos que están sobredispersos en relación con la distribución de Poisson.
 
 + La probabilidad de un vínculo entre dos individuos se modeló utilizando el modelo log lineal y la regresión logística.
 ---
@@ -480,15 +480,13 @@ class: center, middle, inverse
 
 + Es necesario estudiar el efecto de la agregación a lo largo del tiempo en el monitoreo de redes
 
-+ El uso de enfoques de tasa de descubrimiento falso parece apropiado para métodos basados en el uso simultáneo de muchas cartas.
-
 + Se necesitan métodos adicionales que incorporen información de covariables sobre la red o los contactos. Esto podría incluir etiquetas que clasifiquen individuos en grupos, la longitud o el tamaño del mensaje que constituye el contacto y el momento de cualquier contacto.
 
 + Es probable que haya efectos estacionales en los datos de la red, por ejemplo, efectos del día de la semana o efectos de días festivos. Los efectos estacionales podrían identificarse utilizando datos de la Fase I. En ocasiones, el efecto de esta variación puede eliminarse al agregar los datos a lo largo del tiempo, por ejemplo, la agregación de datos diarios por semanas. 
 
 ---
 
-+ Los métodos deben adaptarse a las redes en evolución para dar cuenta de los nuevos individuos que ingresan a la red y de las personas que abandonan la red. Estos eventos pueden desencadenar señales de cambio de red que probablemente no interesen.
++ Los métodos deben adaptarse a la evolución de las redes para dar cuenta de los nuevos individuos que ingresan a ella y de las personas que la abandonan. Estos eventos pueden desencadenar señales de cambio de red que probablemente no interesen.
 
 + Como un tema de investigación de monitoreo de calidad, se necesita una comparación entre las cartas de control bayesianas basados en las distribuciones predictivas y los enfoques frecuentistas.
 
@@ -497,7 +495,9 @@ class: center, middle, inverse
 
 # ¡Gracias!
 
-Diapositivas creadas mediante el paquete de R **xaringan**.
+.footnote[
+Woodall, W. H., Zhao, M. J., Paynabar, K., Sparks, R., &amp; Wilson, J. D. (2017). _An overview and perspective on social network monitoring_. **IISE Transactions**, 49(3), 354-365. [PDF](https://arxiv.org/pdf/1603.09453.pdf)
+]
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
